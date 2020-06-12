@@ -37,7 +37,7 @@ possible_moves = {'n':'s', 's':'n', 'e':'w', 'w':'e'}
 # start in a room
 visted[player.current_room.id] = player.current_room.get_exits()
 
-# while we haven't visited all the rooms (-1 for the room we did on 37)
+# while we haven't visited all the rooms (-1 for the room we started in outside of the loop)
 while len(visted) < len(room_graph) -1:
     # if the current room hasn't been visited before
     if player.current_room.id not in visted:
@@ -60,10 +60,10 @@ while len(visted) < len(room_graph) -1:
     # set up for next loop
     # remove current room's unexplored directions
     next_move = visted[player.current_room.id].pop(0)
-    # add to the traversal path
-    traversal_path.append(next_move)
     # add to "how we got here"
     path.append(possible_moves[next_move])
+    # add to the traversal path
+    traversal_path.append(next_move)
     # actually move
     player.travel(next_move)
 
