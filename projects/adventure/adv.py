@@ -34,9 +34,10 @@ path = []
 # based on the entrance keep track of the way back out of the room the same way
 possible_moves = {'n':'s', 's':'n', 'e':'w', 'w':'e'}
 
+# start in a room
 visted[player.current_room.id] = player.current_room.get_exits()
 
-# while we haven't visited all the rooms
+# while we haven't visited all the rooms (-1 for the room we did on 37)
 while len(visted) < len(room_graph) -1:
     # if the current room hasn't been visited before
     if player.current_room.id not in visted:
